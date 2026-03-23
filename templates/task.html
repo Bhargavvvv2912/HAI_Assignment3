@@ -4,15 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Headline Task</title>
 </head>
 <body>
     <div class="container">
         <div class="progress">Trial {{ progress }}</div>
         
-        <h2 class="headline">"{{ trial.input }}"</h2>
+        <h2 class="headline" style="margin: 40px 0;">"{{ trial.input }}"</h2>
 
         {% if condition == 'ai' %}
-        <div class="ai-box" style="border: 2px solid #007bff; background: #f0f8ff; padding: 20px; border-radius: 10px; margin: 25px 0; text-align: left;">
+        <div id="ai-trigger-container" style="margin-bottom: 25px;">
+            <button type="button" id="show-ai-btn" 
+                    style="background: #007bff; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 1em; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                💡 Get AI Suggestion
+            </button>
+            <p style="font-size: 0.8em; color: #888; margin-top: 8px;">Click only if you need assistance.</p>
+        </div>
+
+        <div id="ai-box" style="display: none; border: 2px solid #007bff; background: #f0f8ff; padding: 20px; border-radius: 10px; margin: 25px 0; text-align: left;">
             <p style="margin: 0; font-size: 0.9em; color: #555;"><b>💡 AI Assistant Suggestion</b></p>
             
             <p style="font-size: 1.2em; margin: 10px 0;">
@@ -31,14 +40,27 @@
             </p>
 
             <p style="font-size: 0.75em; color: #777; margin-top: 15px; font-style: italic;">
-                *Note: The AI is not perfect. Please use your best judgment to confirm or reject its prediction!
+                *Note: The AI is not perfect. Please use your best judgment!
             </p>
         </div>
+
+        <script>
+            document.getElementById('show-ai-btn').addEventListener('click', function() {
+                // Show the AI Box
+                document.getElementById('ai-box').style.display = 'block';
+                // Hide the button
+                document.getElementById('ai-trigger-container').style.display = 'none';
+                // Update the hidden input to record that AI was used
+                document.getElementById('ai_used_input').value = "1";
+            });
+        </script>
         {% endif %}
 
         <form action="/submit" method="POST" class="btn-group">
-            <button name="choice" value="0" class="real" style="flex: 1; margin-right: 10px;">Real News</button>
-            <button name="choice" value="1" class="sarcastic" style="flex: 1; margin-left: 10px;">Sarcastic</button>
+            <input type="hidden" name="ai_used" id="ai_used_input" value="0">
+            
+            <button name="choice" value="0" class="real" style="flex: 1; margin-right: 10px; padding: 15px;">Real News</button>
+            <button name="choice" value="1" class="sarcastic" style="flex: 1; margin-left: 10px; padding: 15px;">Sarcastic</button>
         </form>
     </div>
 </body>

@@ -15,7 +15,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # --- DATABASE MODEL ---
-class StudySubmission(db.Model):
+# Renamed to FinalStudyResult to force a fresh table with the new column
+class FinalStudyResult(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     uniqname = db.Column(db.String(50))
     worker_id = db.Column(db.String(100))
@@ -24,14 +25,14 @@ class StudySubmission(db.Model):
     headline = db.Column(db.Text)
     user_prediction = db.Column(db.Integer)
     ground_truth = db.Column(db.Integer)
+    ai_used = db.Column(db.Integer) # NEW: 0 if hidden, 1 if revealed
     time_spent = db.Column(db.Float)
     timestamp = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
-# --- DATA PRE-LOADING (Global but safe) ---
+# --- DATA PRE-LOADING ---
 versions_dict = {}
 
 def load_data():
-    """Loads CSVs only if the dictionary is empty"""
     if not versions_dict:
         for i in range(1, 7):
             file_path = f'data/Sarcasm_Study_Version_{i}.csv'
@@ -44,7 +45,6 @@ def load_data():
 
 @app.route('/')
 def index():
-    # Initialize DB and Data on the first hit to avoid startup timeout
     db.create_all()
     load_data()
     session['condition'] = request.args.get('c', 'baseline')
@@ -61,9 +61,9 @@ def start_task():
     session['uniqname'] = u_name
     session['worker_id'] = w_id
     
-    # Check if they participated before
     try:
-        existing = StudySubmission.query.filter_by(uniqname=u_name).first()
+        # Check against the NEW model name
+        existing = FinalStudyResult.query.filter_by(uniqname=u_name).first()
         session['version'] = int(existing.version) if existing else random.randint(1, 6)
     except:
         session['version'] = random.randint(1, 6)
@@ -73,7 +73,7 @@ def start_task():
 
 @app.route('/task')
 def task():
-    load_data() # Ensure data is loaded
+    load_data()
     v = session.get('version')
     idx = session.get('current_trial')
     
@@ -96,6 +96,9 @@ def submit():
         v = int(session.get('version', 1))
         user_choice = int(request.form.get('choice', 0))
         
+        # --- NEW: Capture the AI Interaction ---
+        was_ai_revealed = int(request.form.get('ai_used', 0))
+        
         df = versions_dict[v]
         headline_text = str(df.iloc[idx]['input'])
         truth_value = int(df.iloc[idx]['ground_truth'])
@@ -105,7 +108,8 @@ def submit():
         if start_time_str:
             duration = (datetime.datetime.now() - datetime.datetime.fromisoformat(start_time_str)).total_seconds()
 
-        new_result = StudySubmission(
+        # Using NEW model name
+        new_result = FinalStudyResult(
             uniqname=str(session.get('uniqname')),
             worker_id=str(session.get('worker_id')),
             condition=str(session.get('condition')),
@@ -113,6 +117,7 @@ def submit():
             headline=headline_text,
             user_prediction=user_choice,
             ground_truth=truth_value,
+            ai_used=was_ai_revealed, # Record if they clicked the button
             time_spent=round(duration, 2)
         )
         db.session.add(new_result)
@@ -133,14 +138,16 @@ def complete():
 def export_data():
     import io, csv
     from flask import Response
-    results = StudySubmission.query.all()
+    # Query NEW model
+    results = FinalStudyResult.query.all()
     output = io.StringIO()
     writer = csv.writer(output)
-    writer.writerow(['Uniqname', 'WorkerID', 'Condition', 'Version', 'Headline', 'UserChoice', 'Truth', 'Time'])
+    # Added 'AI_Used' to CSV header
+    writer.writerow(['Uniqname', 'WorkerID', 'Condition', 'Version', 'Headline', 'UserChoice', 'Truth', 'AI_Used', 'Time'])
     for r in results:
-        writer.writerow([r.uniqname, r.worker_id, r.condition, r.version, r.headline, r.user_prediction, r.ground_truth, r.time_spent])
+        # Added r.ai_used to row
+        writer.writerow([r.uniqname, r.worker_id, r.condition, r.version, r.headline, r.user_prediction, r.ground_truth, r.ai_used, r.time_spent])
     return Response(output.getvalue(), mimetype="text/csv", headers={"Content-disposition": "attachment; filename=results.csv"})
 
 if __name__ == "__main__":
-    # Local development only
     app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
