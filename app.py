@@ -96,32 +96,57 @@ def task():
 
 @app.route('/submit', methods=['POST'])
 def submit():
-    # Ensure this matches name="choice" in task.html
-    user_choice = int(request.form.get('choice', 0))
-    idx = session.get('current_trial')
-    v = session.get('version')
-    df = versions_dict[v]
+    try:
+        # 1. Pull from session and force to standard Python INT
+        idx = session.get('current_trial')
+        v = session.get('version')
+
+        # Safety check: if session died, restart them
+        if idx is None or v is None:
+            return redirect(url_for('index'))
+
+        idx = int(idx)
+        v = int(v)
+        
+        # 2. Capture the user's choice from the button
+        user_choice = int(request.form.get('choice', 0))
+        
+        # 3. Get the CSV data
+        df = versions_dict[v]
+        
+        # Force these to standard Python types (str and int)
+        # This prevents the "Numpy" database error
+        headline_text = str(df.iloc[idx]['input'])
+        truth_value = int(df.iloc[idx]['ground_truth'])
+        
+        # 4. Handle Timer
+        start_time_str = session.get('start_time')
+        duration = 0.0
+        if start_time_str:
+            duration = (datetime.datetime.now() - datetime.datetime.fromisoformat(start_time_str)).total_seconds()
+
+        # 5. Database Save (Explicitly casting every field)
+        new_result = StudySubmission(
+            uniqname=str(session.get('uniqname')),
+            worker_id=str(session.get('worker_id')),
+            condition=str(session.get('condition')),
+            version=int(v),
+            headline=headline_text,
+            user_prediction=int(user_choice),
+            ground_truth=int(truth_value),
+            time_spent=float(round(duration, 2))
+        )
+        db.session.add(new_result)
+        db.session.commit()
+
+        # 6. Update trial and redirect
+        session['current_trial'] = idx + 1
+        return redirect(url_for('task'))
     
-    start = datetime.datetime.fromisoformat(session['start_time'])
-    duration = (datetime.datetime.now() - start).total_seconds()
-
-    # SAVE TO DATABASE using the NEW model name
-    new_result = StudySubmission(
-        uniqname=session.get('uniqname'),
-        worker_id=session.get('worker_id'),
-        condition=session.get('condition'),
-        version=v,
-        headline=df.iloc[idx]['input'],
-        user_prediction=user_choice,
-        ground_truth=df.iloc[idx]['ground_truth'],
-        time_spent=round(duration, 2)
-    )
-    db.session.add(new_result)
-    db.session.commit()
-
-    session['current_trial'] += 1
-    return redirect(url_for('task'))
-
+    except Exception as e:
+        # This will now show the EXACT line and error type
+        import traceback
+        return f"<h2>Submission Error</h2><p>{str(e)}</p><pre>{traceback.format_exc()}</pre>"
 @app.route('/complete')
 def complete():
     code = f"SARCASM-{session.get('uniqname')[:3].upper()}-{str(uuid.uuid4())[:4].upper()}"
