@@ -1,80 +1,51 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-import pandas as pd
+from flask_sqlalchemy import SQLAlchemy
+import os
 import datetime
 import uuid
-import os
 
 app = Flask(__name__)
-app.secret_key = "umich_hai_study_secret"
+app.secret_key = os.environ.get("SECRET_KEY", "a_very_secret_key")
 
-# Load the 6 versions into memory
-versions = {i: pd.read_csv(f'data/Sarcasm_Study_Version_{i}.csv') for i in range(1, 7)}
+# Database Configuration
+# In Render, add an Environment Variable called DATABASE_URL
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///local_test.db')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
 
-@app.route('/')
-def index():
-    # Capture condition and version from the URL
-    session['condition'] = request.args.get('c', 'baseline')
-    session['version'] = request.args.get('v', 1, type=int)
-    return render_template('index.html')
+# Define the Result model (This replaces your CSV columns)
+class StudyResult(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    worker_id = db.Column(db.String(100))
+    condition = db.Column(db.String(20))
+    version = db.Column(db.Integer)
+    headline = db.Column(db.Text)
+    user_prediction = db.Column(db.Integer)
+    ground_truth = db.Column(db.Integer)
+    time_spent = db.Column(db.Float)
+    timestamp = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
-@app.route('/start', methods=['POST'])
-def start_task():
-    session['worker_id'] = request.form.get('worker_id')
-    session['current_trial'] = 0
-    return redirect(url_for('task'))
+# Create the database tables
+with app.app_context():
+    db.create_all()
 
-@app.route('/task')
-def task():
-    v = session.get('version')
-    idx = session.get('current_trial')
-    df = versions[v]
-    
-    if idx >= len(df):
-        return redirect(url_for('complete'))
-
-    trial_data = df.iloc[idx].to_dict()
-    session['start_time'] = datetime.datetime.now().isoformat()
-    
-    return render_template('task.html', 
-                           trial=trial_data, 
-                           condition=session['condition'],
-                           progress=f"{idx + 1} of {len(df)}")
-
+# --- Inside your /submit route ---
 @app.route('/submit', methods=['POST'])
 def submit():
-    user_choice = int(request.form.get('choice'))
-    idx = session.get('current_trial')
-    df = versions[session['version']]
+    # ... (keep your existing logic to get user_choice and duration) ...
     
-    # Timing logic
-    duration = (datetime.datetime.now() - datetime.datetime.fromisoformat(session['start_time'])).total_seconds()
-
-    # Data to log (This is what gets you the bonus)
-    log_entry = {
-        "timestamp": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "worker_id": session.get('worker_id'),
-        "condition": session.get('condition'),
-        "version": session.get('version'),
-        "headline": df.iloc[idx]['input'],
-        "model_output": df.iloc[idx]['model_output'],
-        "ai_confidence": df.iloc[idx]['ai_confidence'],
-        "ground_truth": df.iloc[idx]['ground_truth'],
-        "user_prediction": user_choice,
-        "is_user_correct": 1 if user_choice == df.iloc[idx]['ground_truth'] else 0,
-        "time_spent_seconds": round(duration, 2)
-    }
-
-    # Append to CSV
-    log_df = pd.DataFrame([log_entry])
-    log_df.to_csv('study_results.csv', mode='a', header=not os.path.exists('study_results.csv'), index=False)
+    # SAVE TO DATABASE INSTEAD OF CSV
+    new_result = StudyResult(
+        worker_id=session.get('worker_id'),
+        condition=session.get('condition'),
+        version=session.get('version'),
+        headline=df.iloc[idx]['input'],
+        user_prediction=user_choice,
+        ground_truth=df.iloc[idx]['ground_truth'],
+        time_spent=round(duration, 2)
+    )
+    db.session.add(new_result)
+    db.session.commit()
 
     session['current_trial'] += 1
     return redirect(url_for('task'))
-
-@app.route('/complete')
-def complete():
-    code = f"WIN-{str(uuid.uuid4())[:8].upper()}"
-    return render_template('complete.html', completion_code=code)
-
-if __name__ == "__main__":
-    app.run(debug=True)
