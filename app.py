@@ -15,7 +15,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # --- DATABASE MODEL ---
-class FinalResultV3(db.Model): # New name to ensure a fresh, clean table
+class FinalResultsV5(db.Model): 
     id = db.Column(db.Integer, primary_key=True)
     uniqname = db.Column(db.String(50))
     worker_id = db.Column(db.String(100))
@@ -28,26 +28,26 @@ class FinalResultV3(db.Model): # New name to ensure a fresh, clean table
     time_spent = db.Column(db.Float)
     timestamp = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
-# --- GLOBAL DATA ---
+# Global variables for data
 versions_dict = {}
 
-# --- ONE-TIME STARTUP LOGIC ---
-with app.app_context():
-    print("--- STARTING APP BOOT ---")
-    db.create_all()
-    # Pre-load CSVs once during startup
-    for i in range(1, 7):
-        path = f'data/Sarcasm_Study_Version_{i}.csv'
-        if os.path.exists(path):
-            versions_dict[i] = pd.read_csv(path)
-            print(f"Loaded Version {i} - {len(versions_dict[i])} rows")
-    print("--- APP BOOT COMPLETE ---")
+def get_data():
+    """Safety function to load data only when needed"""
+    global versions_dict
+    if not versions_dict:
+        # Load CSVs only on the first actual request
+        for i in range(1, 7):
+            path = f'data/Sarcasm_Study_Version_{i}.csv'
+            if os.path.exists(path):
+                versions_dict[i] = pd.read_csv(path)
+    return versions_dict
 
 # --- ROUTES ---
 
 @app.route('/')
 def index():
-    print(f"Index hit. Condition: {request.args.get('c')}")
+    # Create tables only when someone actually visits
+    db.create_all()
     session['condition'] = request.args.get('c', 'baseline')
     return render_template('index.html')
 
@@ -63,7 +63,7 @@ def start_task():
     session['worker_id'] = w_id
     
     try:
-        existing = FinalResultV3.query.filter_by(uniqname=u_name).first()
+        existing = FinalResultsV5.query.filter_by(uniqname=u_name).first()
         session['version'] = int(existing.version) if existing else random.randint(1, 6)
     except:
         session['version'] = random.randint(1, 6)
@@ -73,13 +73,14 @@ def start_task():
 
 @app.route('/task')
 def task():
+    data = get_data() # Load CSVs here
     v = session.get('version')
     idx = session.get('current_trial')
     
-    if v not in versions_dict or idx >= 36:
+    if v not in data or idx >= 36:
         return redirect(url_for('complete'))
 
-    df = versions_dict[v]
+    df = data[v]
     trial_data = df.iloc[idx].to_dict()
     session['start_time'] = datetime.datetime.now().isoformat()
     
@@ -96,8 +97,15 @@ def submit():
         user_choice = int(request.form.get('choice', 0))
         ai_val = int(request.form.get('ai_used', 0))
         
-        df = versions_dict[v]
-        new_result = FinalResultV3(
+        data = get_data()
+        df = data[v]
+        
+        start_time_str = session.get('start_time')
+        duration = 0.0
+        if start_time_str:
+            duration = (datetime.datetime.now() - datetime.datetime.fromisoformat(start_time_str)).total_seconds()
+
+        new_result = FinalResultsV5(
             uniqname=str(session.get('uniqname')),
             worker_id=str(session.get('worker_id')),
             condition=str(session.get('condition')),
@@ -106,7 +114,7 @@ def submit():
             user_prediction=user_choice,
             ground_truth=int(df.iloc[idx]['ground_truth']),
             ai_used=ai_val,
-            time_spent=0.0 # Timer logic simplified for stability
+            time_spent=round(duration, 2)
         )
         db.session.add(new_result)
         db.session.commit()
@@ -126,14 +134,10 @@ def complete():
 def export_data():
     import io, csv
     from flask import Response
-    results = FinalResultV3.query.all()
+    results = FinalResultsV5.query.all()
     output = io.StringIO()
     writer = csv.writer(output)
     writer.writerow(['Uniqname', 'WorkerID', 'Condition', 'Version', 'Headline', 'UserChoice', 'Truth', 'AI_Used', 'Time'])
     for r in results:
         writer.writerow([r.uniqname, r.worker_id, r.condition, r.version, r.headline, r.user_prediction, r.ground_truth, r.ai_used, r.time_spent])
     return Response(output.getvalue(), mimetype="text/csv", headers={"Content-disposition": "attachment; filename=results.csv"})
-
-if __name__ == "__main__":
-    # This block is for LOCAL TESTING only
-    app.run(host='0.0.0.0', port=5000)
