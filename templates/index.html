@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body>
+    <div class="container">
+        <h1>Headline Classification Study</h1>
+        <p>You will review a series of news headlines and decide if they are <b>Real News</b> or <b>Sarcastic</b>.</p>
+        <form action="/start" method="POST">
+            <input type="text" name="worker_id" placeholder="Enter MTurk Worker ID" required>
+            <button type="submit">Begin Task</button>
+        </form>
+    </div>
+</body>
+</html>

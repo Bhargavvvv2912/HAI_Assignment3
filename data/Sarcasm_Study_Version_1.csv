@@ -1,0 +1,40 @@
+ground_truth,input,article_link,model_output,ai_confidence,is_correct
+1,british royal family places queen elizabeth in nursing home,https://www.theonion.com/british-royal-family-places-queen-elizabeth-in-nursing-1819576674,1,0.8921,1
+1,dolphin spends amazing vacation swimming with stockbroker,https://local.theonion.com/dolphin-spends-amazing-vacation-swimming-with-stockbrok-1819575361,1,0.9338,1
+0,police officers replace 11-year-old's stolen xbox with a brand-new one,https://www.huffingtonpost.com/entry/police-xbox-christmas-surprise_us_565e7610e4b079b2818c88a0,1,0.7256,0
+0,"broward sheriff's deputy stole dvds, toys from walmart while in uniform: police",https://www.huffingtonpost.com/entry/broward-sheriff-shopifting_us_5b055929e4b0784cd2b0184a,0,0.9201,1
+1,early humans finally drunk enough to invent dancing,https://entertainment.theonion.com/early-humans-finally-drunk-enough-to-invent-dancing-1819571222,1,0.7561,1
+1,republican establishment quietly relieved party no longer their responsibility,https://politics.theonion.com/republican-establishment-quietly-relieved-party-no-long-1819578862,1,0.9496,1
+0,how i learned to get naked with strangers again after my mastectomy,https://www.huffingtonpost.com/entry/how-i-learned-to-get-naked-with-strangers-again-after-my-mastectomy_b_6733490.html,0,0.937,1
+1,red lobster offers new 'top hat full of shrimp' to attract wealthier customers,https://www.theonion.com/red-lobster-offers-new-top-hat-full-of-shrimp-to-attrac-1819589319,1,0.885,1
+1,6-year-old becomes first child to complete solo ride around block,https://local.theonion.com/6-year-old-becomes-first-child-to-complete-solo-ride-ar-1819571610,1,0.9474,1
+0,men don't have it all,https://www.huffingtonpost.com/entry/men-dont-have-it-all_b_5871402.html,0,0.9375,1
+0,the democratic presidential candidates meet again at a forum in iowa,https://www.huffingtonpost.com/entry/iowa-brown-and-black-forum_us_569421ede4b086bc1cd4d7f2,0,0.9483,1
+0,let's all get naked and pose like frozen chickens,https://www.huffingtonpost.com/entry/frozenchook-craze_us_5617d31fe4b0e66ad4c76b8e,0,0.897,1
+0,"ben affleck slurs words defending his one true love, tom brady",https://www.huffingtonpost.com/entry/ben-affleck-slurs-his-words-defending-his-one-true-love-tom-brady_us_576bd153e4b0c0252e787425,0,0.8942,1
+0,weird gifts for a weird dad,https://www.huffingtonpost.com/entry/weirdest-fathers-day-gift_n_5373379.html,0,0.9343,1
+1,"nelson mandela admits thoughts, prayers of millions played no part in recovery",https://www.theonion.com/nelson-mandela-admits-thoughts-prayers-of-millions-pla-1819575136,0,0.5362,0
+0,"vladimir putin, florida man, arrested for trespassing at supermarket",https://www.huffingtonpost.com/entry/vladimir-putin-florida_us_57c58475e4b0cdfc5ac91a31,0,0.8349,1
+1,fourth-grader with shark tooth necklace must have killed great white,https://local.theonion.com/fourth-grader-with-shark-tooth-necklace-must-have-kille-1819576502,1,0.9157,1
+0,florida man sentenced for running over ducks with lawnmower,https://www.huffingtonpost.comhttp://pubx.ch/1MsqqmJ,1,0.6632,0
+1,"18-to-35 white, male demographic still searching for perfect way to quench its thirst",https://www.theonion.com/18-to-35-white-male-demographic-still-searching-for-pe-1824260818,1,0.9389,1
+0,cops attempt to unlock phone of man they killed using his finger,https://www.huffingtonpost.com/entry/florida-cops-use-dead-mans-finger-in-attempt-to-unlock-iphone_us_5ae0bcc1e4b02baed1b5ac3a,1,0.9217,0
+0,"women rewrite the constitution in jay-z's 'family feud,' directed by ava duvernay",https://www.huffingtonpost.com/entry/jay-z-family-fued_us_5a46c64be4b0b0e5a7a67759,0,0.9572,1
+0,man accused of molesting 5 kids,https://www.huffingtonpost.com/entry/joseph-hyde-molests-5-kids_n_5882538.html,1,0.7515,0
+1,uneventful past finally catches up to boring man,https://www.theonion.com/uneventful-past-finally-catches-up-to-boring-man-1819567818,1,0.954,1
+1,'95-'96 prayers finally answered,https://local.theonion.com/95-96-prayers-finally-answered-1819569402,0,0.667,0
+0,"burglar bursts through ymca ceiling, steals toy money",https://www.huffingtonpost.com/entry/burglar-steals-toy-money_us_57e01b85e4b0071a6e08994d,1,0.8671,0
+1,wall street executive telling friend how amazing it is to see clinton live,https://politics.theonion.com/wall-street-executive-telling-friend-how-amazing-it-is-1819579344,1,0.8286,1
+1,experts advise against throwing laptop across office even though it will feel incredible,https://www.theonion.com/experts-advise-against-throwing-laptop-across-office-ev-1819579112,1,0.9427,1
+0,woman accused of setting fire to yoga studio explains smiling mug shot,https://www.huffingtonpost.com/entry/nancy-suzanne-duarte-mug-shot-burning-yoga-studio_n_6956902.html,1,0.9194,0
+1,amazing original thing to become hated cliché in 6 months,https://www.theonion.com/amazing-original-thing-to-become-hated-cliche-in-6-mont-1819571548,1,0.9527,1
+1,man knows in reality marrying minnie mouse wouldn't be as perfect as he imagines,https://local.theonion.com/man-knows-in-reality-marrying-minnie-mouse-wouldn-t-be-1828142524,1,0.9193,1
+1,historical archives: amazing publick spectacle!,https://www.theonion.com/historical-archives-amazing-publick-spectacle-1819570183,1,0.8222,1
+0,"brazil prison riot kills at least 27 inmates, reports say",https://www.huffingtonpost.com/entry/brazil-prison-riot_us_587bd202e4b09281d0eb73b6,0,0.9105,1
+1,corrugated-cardboard lobby once again rates all 535 congressmen 'poor' on corrugated-cardboard-related issues,https://www.theonion.com/corrugated-cardboard-lobby-once-again-rates-all-535-con-1819574824,1,0.7251,1
+0,is the gates foundation investing in the abuse of palestinian prisoners?,https://www.huffingtonpost.com/entry/is-the-gates-foundation-investing-in-the-abuse-of-palestinian-prisoners_b_5230578.html,0,0.9552,1
+1,owls are assholes,https://www.theonion.com/owls-are-assholes-1819586357,0,0.9067,0
+0,death toll from powerful mexico earthquake rises to 91,https://www.huffingtonpost.com/entry/death-toll-from-powerful-mexico-earthquake-rises_us_59b57e50e4b0354e44127ea3,0,0.6801,1
+0,when your life clicks into place,https://www.huffingtonpost.com/entry/post_8565_b_6134822.html,0,0.9487,1
+1,weird man begins every morning by dousing his naked body in water,https://local.theonion.com/weird-man-begins-every-morning-by-dousing-his-naked-bod-1819575749,1,0.93,1
+1,college rape victim pretty thrilled she gets to recount assault to faculty committee,https://www.theonion.com/college-rape-victim-pretty-thrilled-she-gets-to-recount-1819576529,1,0.9367,1

@@ -1,0 +1,38 @@
+ground_truth,input,article_link,model_output,ai_confidence,is_correct
+0,john kerry: 'there's a massive amount of overclassification',https://www.huffingtonpost.com/entry/john-kerry-hillary-clinton-emails_us_55e8b68ee4b093be51baf247,0,0.9445,1
+0,stephen colbert mocks lawmakers for talking porn instead of guns,https://www.huffingtonpost.com/entry/stephen-colbert-florida-porn_us_5a8e3d05e4b0617d4639db24,0,0.9395,1
+0,man accused of keeping woman in crate killed by cops,https://www.huffingtonpost.com/entry/-james-barton-horn-jr-dead_n_7429118.html,1,0.9234,0
+1,area dad saw a great show on bigfoot last night,https://www.theonion.com/area-dad-saw-a-great-show-on-bigfoot-last-night-1819567857,1,0.8258,1
+1,palestinian family trapped under rubble thrilled to hear 'gaza' trending on twitter,https://www.theonion.com/palestinian-family-trapped-under-rubble-thrilled-to-hea-1819574197,1,0.7089,1
+1,woman with really pointy feet finds perfect shoes,https://www.theonion.com/woman-with-really-pointy-feet-finds-perfect-shoes-1819587690,1,0.9347,1
+0,stolen moment of the week: andy ofiesh and kaytlin bailey at the creek and the cave,https://www.huffingtonpost.com/entry/stolen-moment-of-the-week_81_b_6407732.html,0,0.9546,1
+1,fema recommends americans always have go-bag packed in case past finally catches up with them,https://www.theonion.com/fema-recommends-americans-always-have-go-bag-packed-in-1819579845,1,0.9482,1
+1,baltimore preparing for hurricane joaquin by adding second layer of plywood to shuttered small businesses,https://www.theonion.com/baltimore-preparing-for-hurricane-joaquin-by-adding-sec-1819578307,1,0.85,1
+0,naked truth: how i learned to stop worrying and (sort of) love my body,https://www.huffingtonpost.com/entry/naked-truth-how-i-learned-to-stop-worrying-and-sort_us_5988b2d3e4b0f25bdfb31eb1,0,0.9567,1
+0,8 super effective ways to use social media to land your next job,https://www.huffingtonpost.com/entry/laid-off-how-and-why-to-tell-the-world-on-social-media_us_57bf095ce4b085c1ff28033b,0,0.9279,1
+0,"spring must-haves for cool, curvy girls",https://www.huffingtonpost.com/entry/curvy-girl-spring-must-haves_n_5215053.html,0,0.592,1
+0,my hair was a stranger to me,https://www.huffingtonpost.com/entry/my-hair-was-a-stranger-to-me_us_57c96ecce4b0b9c5b7381ef7,0,0.9063,1
+1,study: best method of finding job still excitedly circling newspaper listing in red marker,https://www.theonion.com/study-best-method-of-finding-job-still-excitedly-circl-1819577683,1,0.9557,1
+0,brooklyn pizza restaurant gets threats after video links it to 'pizzagate' hoax,https://www.huffingtonpost.com/entry/pizzagate-robertas-new-york-pizza_us_58484892e4b08c82e8893339,0,0.6919,1
+1,"this great song, bar sources report",https://www.theonion.com/this-great-song-bar-sources-report-1819578033,0,0.931,0
+0,"mechanic stole city bus because he was late for work, police say",https://www.huffingtonpost.com/entry/man-stole-city-bus_us_56cb17f2e4b0ec6725e324ae,1,0.7113,0
+1,getting randomly picked to make half-court shots now best way to earn living,https://www.theonion.com/getting-randomly-picked-to-make-half-court-shots-now-be-1819570615,1,0.9505,1
+0,florida man who landed gyrocopter at u.s. capitol rejects plea deals,https://www.huffingtonpost.com/entry/gyrocopter-plea-deal_us_55afed5ee4b08f57d5d3674d,1,0.6251,0
+0,las vegas review-journal staffers want to know who owns their newspaper,https://www.huffingtonpost.com/entry/las-vegas-review-journal-owner_us_566de9b6e4b0fccee16ef472,0,0.9165,1
+0,alligator and python locked in death duel on golf course,https://www.huffingtonpost.com/entry/alligator-and-python-locked-in-death-duel-on-golf-course_us_5a608199e4b01b82649ce289,1,0.9105,0
+1,new excedrin 'lights out' kills you dead on the spot,https://www.theonion.com/new-excedrin-lights-out-kills-you-dead-on-the-spot-1819587443,1,0.5538,1
+1,area man does indeed belong at applebee's,https://www.theonion.com/area-man-does-indeed-belong-at-applebees-1819586654,1,0.9123,1
+0,watch abbi from 'broad city' strip naked and rock out to lady gaga,https://www.huffingtonpost.com/entry/broad-city-abbi-lady-gaga_n_6519212.html,1,0.7721,0
+1,bob dole makes car and driver 10 best list,https://www.theonion.com/bob-dole-makes-car-and-driver-10-best-list-1819563881,1,0.6317,1
+1,relapse greatest week of man's life,https://local.theonion.com/relapse-greatest-week-of-man-s-life-1819579818,1,0.9438,1
+0,man accused of urinating on cop after yelling 'f*** trump',https://www.huffingtonpost.com/entry/joseph-murphy-urination-cop-car_us_586bf8b5e4b0de3a08f9bfab,1,0.8702,0
+1,conversations pretty limited when friend not in midst of crisis,https://local.theonion.com/conversations-pretty-limited-when-friend-not-in-midst-o-1819576642,1,0.9521,1
+1,amazing medical discovery to add years of fish-oil consumption to man's life,https://www.theonion.com/amazing-medical-discovery-to-add-years-of-fish-oil-cons-1819569134,1,0.8855,1
+1,seymour hersh uncovers new thing too sad to think about,https://politics.theonion.com/seymour-hersh-uncovers-new-thing-too-sad-to-think-about-1819570703,1,0.862,1
+0,a response to letters defending the japanese american incarceration in the la times,https://www.huffingtonpost.com/entry/a-response-to-letters-defending-the-japanese-internment_us_584e56b9e4b0151082221d28,0,0.9478,1
+1,"dad recounts amazing story of how, through quick thinking, he saved $4.27",https://local.theonion.com/dad-recounts-amazing-story-of-how-through-quick-thinki-1819571772,1,0.9144,1
+0,vegas atm steals $600 - can you get it back?,https://www.huffingtonpost.com/entry/vegas-atm-steals-600-can-you-get-it-back_us_576fd1c3e4b02b2166551ef2,0,0.8088,1
+1,ben affleck nominated for best friend of matt damon,https://entertainment.theonion.com/ben-affleck-nominated-for-best-friend-of-matt-damon-1819574356,0,0.6083,0
+0,3 must-have shoes for the office,https://www.huffingtonpost.com/entry/3-must-have-shoes-for-the-office_us_57f1e4fce4b095bd896a132e,0,0.9321,1
+0,naked leadership,https://www.huffingtonpost.com/entry/naked-leadership_b_7701974.html,0,0.9349,1
+1,report: john grisham slowly but surely climbing list of greatest living american authors,https://entertainment.theonion.com/report-john-grisham-slowly-but-surely-climbing-list-of-1826058008,1,0.9233,1

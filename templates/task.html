@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body>
+    <div class="container">
+        <div class="progress">Headline {{ progress }}</div>
+        <h2 class="headline">"{{ trial.input }}"</h2>
+
+        {% if condition == 'ai' %}
+        <div class="ai-box">
+            <p><b>💡 Model Suggestion:</b> {{ "Sarcastic" if trial.model_output == 1 else "Real News" }}</p>
+            <p><b>Confidence:</b> {{ (trial.ai_confidence * 100)|round|int }}%</p>
+        </div>
+        {% endif %}
+
+        <form action="/submit" method="POST" class="btn-group">
+            <button name="choice" value="0" class="real">Real News</button>
+            <button name="choice" value="1" class="sarcastic">Sarcastic</button>
+        </form>
+    </div>
+</body>
+</html>

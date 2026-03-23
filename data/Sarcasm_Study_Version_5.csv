@@ -1,0 +1,37 @@
+ground_truth,input,article_link,model_output,ai_confidence,is_correct
+1,woman mentally rifles through friends for perfect person to sympathize with current pettiness,https://local.theonion.com/woman-mentally-rifles-through-friends-for-perfect-perso-1823359362,1,0.9551,1
+0,the 'bear-naked chef' brings his mouth-watering skills to europe,https://www.huffingtonpost.com/entry/bear-naked-chef-travel_us_572a4aa9e4b016f3789487cd,0,0.9469,1
+1,taylor swift breaks political silence to throw support behind restoring shōgun to throne of japan,https://entertainment.theonion.com/taylor-swift-breaks-political-silence-to-throw-support-1829602513,1,0.7318,1
+1,sudanese youths go wild for great taste of any food whatsoever,https://www.theonion.com/sudanese-youths-go-wild-for-great-taste-of-any-food-wha-1819564641,1,0.8232,1
+0,trump supporters are stepping up their attacks on bob mueller and the fbi,https://www.huffingtonpost.com/entry/trump-fbi-mueller-special-counsel_us_5a36c5e4e4b01d429cc9e056,0,0.9436,1
+1,parole board swayed by reverse psychology,https://local.theonion.com/parole-board-swayed-by-reverse-psychology-1819568519,1,0.8706,1
+1,upper-middle-class woman worries there's better coffee she doesn't know about,https://www.theonion.com/upper-middle-class-woman-worries-theres-better-coffee-s-1819566673,1,0.8916,1
+0,fbi interviews clinton aides including huma abedin as part of email probe,https://www.huffingtonpost.comhttp://www.cnn.com/2016/05/05/politics/fbi-interviews-huma-abedin-clinton-aide/index.html,0,0.8546,1
+0,a queer woman embarks on unusual quest for acceptance in new film,https://www.huffingtonpost.com/entry/robin-cloud-out-again_us_58c94d10e4b01c029d77e911,0,0.6152,1
+0,deconstructing mr. damore's google diversity memo,https://www.huffingtonpost.com/entry/deconstructing-mr-damones-google-diversity-memo_us_5991de85e4b0caa1687a624b,0,0.9433,1
+0,rattlesnakes have been observed,https://www.huffingtonpost.com/entry/rattlesnakes-have-been-ob_b_5966992.html,0,0.8281,1
+1,someone's job riding on success of antacid gum,https://www.theonion.com/someones-job-riding-on-success-of-antacid-gum-1819587009,1,0.7846,1
+0,cambodian paper takes parting shot at 'dictatorship' in final edition,https://www.huffingtonpost.com/entry/cambodia-daily-newspaper_us_59ad72c6e4b0b5e53100155d,1,0.9076,0
+0,man accused of masturbating in car near girl scouts,https://www.huffingtonpost.com/entry/man-accused-of-masturbating-in-car-near-girl-scouts_us_56d5de26e4b03260bf783cfa,1,0.8629,0
+1,black community united by love of homeboys in outer space episode,https://www.theonion.com/black-community-united-by-love-of-homeboys-in-outer-spa-1819586137,1,0.6343,1
+0,we deserve better,https://www.huffingtonpost.com/entry/americans-shouldnt-have-to-live-under-the-constant-threat-of-gun-violence_us_59418204e4b003d5948cdd84,0,0.9315,1
+1,hillary clinton suspended 3 weeks by fec for spitting on volunteer,https://politics.theonion.com/hillary-clinton-suspended-3-weeks-by-fec-for-spitting-o-1819577997,0,0.8207,0
+0,"drunk naked man streaks at women's march, pays the price",https://www.huffingtonpost.com/entry/drunk-naked-man-streaks-womens-march-pays-the-price_us_566b0d27e4b009377b24cdb7,1,0.6924,0
+0,the key to winning the super bowl: looking good out there?,https://www.huffingtonpost.com/entry/the-key-to-winning-the-super-bowl-looking-good-out-there_us_58954b82e4b0c1284f262af3,0,0.958,1
+0,man accused of shooting and burning 2 people after refusing to pay cab fare,https://www.huffingtonpost.com/entry/south-carolina-murder-cab-fare_us_56ddd970e4b0000de40565af,1,0.5634,0
+1,kitchenaid unveils new all-terrain rolling pin,https://www.theonion.com/kitchenaid-unveils-new-all-terrain-rolling-pin-1821259526,1,0.9416,1
+0,woman accused of heinous sex crimes against 3-year-old and dog,https://www.huffingtonpost.com/entry/angeline-lodice-had-sex-with-dog_n_6084074.html,1,0.7906,0
+1,cereal commercial completely neglects showing numerous life problems character faces beyond breakfast,https://www.theonion.com/cereal-commercial-completely-neglects-showing-numerous-1819575619,1,0.9524,1
+0,florida man gets arrested with 'go directly to jail' shirt,https://www.huffingtonpost.com/entry/go-directly-to-jail-shirt_n_6083208.html,1,0.7094,0
+1,congress splits into male and female senators to discuss newest reproductive bill,https://politics.theonion.com/congress-splits-into-male-and-female-senators-to-discus-1819576485,1,0.802,1
+1,study: 90% of all meowing comes from owners trying to get cats to meow back,https://www.theonion.com/study-90-of-all-meowing-comes-from-owners-trying-to-g-1819580323,1,0.9344,1
+1,amazing 'human fly' lives off diet of garbage,https://www.theonion.com/amazing-human-fly-lives-off-diet-of-garbage-1819587760,1,0.9259,1
+0,what gop hopefuls think of tom cotton's iran bombing claim,https://www.huffingtonpost.com/entry/what-gop-hopefuls-think-o_n_7093822.html,0,0.9638,1
+1,london opening ceremonies end with traditional lighting of olympic stadium,https://www.theonion.com/london-opening-ceremonies-end-with-traditional-lighting-1819590768,1,0.8522,1
+1,lieberman's overlords most displeased,https://politics.theonion.com/liebermans-overlords-most-displeased-1819570300,0,0.818,0
+1,chinese man worried you can't have respectful debate about how amazing government is anymore,https://www.theonion.com/chinese-man-worried-you-can-t-have-respectful-debate-ab-1832652900,1,0.9264,1
+0,pressure to defund planned parenthood increases for gop,https://www.huffingtonpost.comhttp://www.realclearpolitics.com/articles/2015/08/06/pressure_to_defund_planned_parenthood_increases_for_gop_127683.html,0,0.9347,1
+1,"naked, dripping wet tom brady thrilled by judge's decision to overturn suspension, imagines judge",https://sports.theonion.com/naked-dripping-wet-tom-brady-thrilled-by-judge-s-decis-1819578188,1,0.9028,1
+0,chris christie's strange justice,https://www.huffingtonpost.com/entry/chris-christies-strange-j_b_6583406.html,0,0.9509,1
+0,9 nitty-gritty organizing tips,https://www.huffingtonpost.com/entry/9-nitty-gritty-organizing_b_6327742.html,0,0.9285,1
+1,obama family adopts 44-year-old portuguese water man,https://www.theonion.com/obama-family-adopts-44-year-old-portuguese-water-man-1819575447,1,0.8769,1

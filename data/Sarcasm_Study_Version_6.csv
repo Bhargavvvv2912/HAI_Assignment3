@@ -1,0 +1,36 @@
+ground_truth,input,article_link,model_output,ai_confidence,is_correct
+1,7-year-old loses respect for shrek after seeing him in burger king commercial,https://entertainment.theonion.com/7-year-old-loses-respect-for-shrek-after-seeing-him-in-1819567434,1,0.8713,1
+0,top obama official: this is no iraq war,https://www.huffingtonpost.com/entry/tony-blinken-iraq_n_5895838.html,0,0.9416,1
+1,"bacon good for you, reports best scientist ever",https://www.theonion.com/bacon-good-for-you-reports-best-scientist-ever-1819566748,1,0.916,1
+1,zoologists thrilled after successfully getting pair of bengal tigers to 69 in captivity,https://www.theonion.com/zoologists-thrilled-after-successfully-getting-pair-of-1834506130,1,0.9194,1
+0,beyoncé's mom steals the red carpet spotlight,https://www.huffingtonpost.com/entry/most-flattering-lipstick-best-beauty-list_n_6036900.html,0,0.9537,1
+1,environmentalists warn swedish fish population being decimated by great pacific sour patch,https://www.theonion.com/environmentalists-warn-swedish-fish-population-being-de-1834275774,1,0.8478,1
+1,nuclear warhead thrilled for chance to finally escape north korea,https://www.theonion.com/nuclear-warhead-thrilled-for-chance-to-finally-escape-n-1819579517,1,0.8853,1
+0,i know something about grace,https://www.huffingtonpost.com/entry/i-know-something-about-gr_b_7176570.html,0,0.919,1
+0,this rare gene mutation makes some people crave fatty foods,https://www.huffingtonpost.com/entry/this-rare-gene-mutation-makes-some-people-crave-fatty-foods_us_57f6663be4b05f39c51e7f41,0,0.8488,1
+0,want to challenge trump on immigration? try a strategy from the antebellum south,https://www.huffingtonpost.com/entry/want-to-challenge-trump-o_b_14040380.html,0,0.9621,1
+0,naked man sleeps and drinks whiskey on subway (nsfw),https://www.huffingtonpost.com/entry/naked-man-subway_n_6129020.html,0,0.7653,1
+1,report: 58% of world's japanese speakers white 23-year-old american males,https://www.theonion.com/report-58-of-world-s-japanese-speakers-white-23-year-1819576309,1,0.8988,1
+0,new 'oitnb' trailer is all about hugs and 'naked cat fights in the shower',https://www.huffingtonpost.com/entry/orange-is-the-new-black-trailer-photos_n_7257762.html,1,0.7396,0
+0,man accused of killing girlfriend on hike wanted insurance money,https://www.huffingtonpost.com/entry/stephen-nichols-arrested-murder_n_6710092.html,1,0.8982,0
+1,that show about the lady sheriff finally released on dvd,https://entertainment.theonion.com/that-show-about-the-lady-sheriff-finally-released-on-dv-1819571247,0,0.8686,0
+1,man surprised to hear himself tell matt damon he's a 'big fan',https://entertainment.theonion.com/man-surprised-to-hear-himself-tell-matt-damon-hes-a-big-1819566258,1,0.9179,1
+0,a sikh american writes to donald trump,https://www.huffingtonpost.com/entry/a-sikh-american-writes-to-donald-trump_us_58399cdce4b050dfe6187c28,0,0.9596,1
+0,"couple stole $35,000 from missing plane victims, police say",https://www.huffingtonpost.com/entry/mh370-theft_n_5684061.html,0,0.7256,1
+0,kanye west scrubs entire twitter account of any mention of trump,https://www.huffingtonpost.com/entry/kanye-west-scrubs-entire-twitter-account-of-any-mention-of-trump_us_5898c84fe4b0c1284f275478,1,0.7077,0
+0,new musical shines light on 'paris is burning' star and the mummified man found in her closet,https://www.huffingtonpost.com/entry/dorians-closet-musical_us_5909c9f8e4b05c3976849b9a,1,0.7812,0
+1,prince charles thinks boys are finally old enough to hear what happened to their mother,https://www.theonion.com/prince-charles-thinks-boys-are-finally-old-enough-to-he-1819573873,1,0.5046,1
+0,police officer goes extra mile for kid whose elf on the shelf got stolen,https://www.huffingtonpost.com/entry/police-officer-goes-extra-mile-for-kid-whose-elf-on-the-shelf-got-stolen_us_5854168ce4b08debb78894e7,1,0.9355,0
+1,hunter s. thompson shoots mouth off one last time,https://www.theonion.com/hunter-s-thompson-shoots-mouth-off-one-last-time-1819588025,1,0.9241,1
+1,obama finally tells rambling tom vilsack to shut the fuck up during cabinet meeting,https://politics.theonion.com/obama-finally-tells-rambling-tom-vilsack-to-shut-the-fu-1819572610,1,0.6668,1
+1,area man nervously asks girlfriend if she'll settle,https://local.theonion.com/area-man-nervously-asks-girlfriend-if-she-ll-settle-1819576495,1,0.9536,1
+0,gwyneth paltrow testifies against man accused of stalking her for 17 years,https://www.huffingtonpost.com/entry/gwyneth-paltrow-stalker-trial_us_56b9c19de4b01d80b247b0b0,0,0.8004,1
+1,seaworld to discontinue great white shark ride,https://www.theonion.com/seaworld-to-discontinue-great-white-shark-ride-1819574980,1,0.8603,1
+1,transgender community caught slightly off guard by baskin-robbins' enthusiastic support,https://www.theonion.com/transgender-community-caught-slightly-off-guard-by-bask-1819577835,0,0.6084,0
+1,"former marine sniper slapped with 3,000-yard restraining order",https://local.theonion.com/former-marine-sniper-slapped-with-3-000-yard-restrainin-1819568771,1,0.8719,1
+0,the naked truth,https://www.huffingtonpost.com/entry/the-naked-truth_1_b_5542113.html,0,0.9512,1
+1,department of agriculture locates perfect goat,https://www.theonion.com/department-of-agriculture-locates-perfect-goat-1819575571,1,0.9497,1
+1,obese man has amazing calves,https://local.theonion.com/obese-man-has-amazing-calves-1829682409,1,0.9436,1
+0,a progressive vision for the fbi,https://www.huffingtonpost.com/entry/a-progressive-vision-for-the-fbi_us_591b3c5ee4b03e1c81b0095d,0,0.9527,1
+0,"mr. obama, man up and talk to assad",https://www.huffingtonpost.com/entry/mr-obama-man-up-talk-to-a_b_5836828.html,0,0.8835,1
+1,new hobby sucks,https://local.theonion.com/new-hobby-sucks-1819569569,1,0.8816,1

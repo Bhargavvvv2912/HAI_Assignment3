@@ -1,0 +1,37 @@
+ground_truth,input,article_link,model_output,ai_confidence,is_correct
+1,"wall street firm develops new high-speed algorithm capable of performing over 10,000 ethical violations per second",https://www.theonion.com/wall-street-firm-develops-new-high-speed-algorithm-capa-1819577578,1,0.9197,1
+0,books with badass female protagonists: what's your go to book?,https://www.huffingtonpost.com/entry/books-with-badass-female-protagonists_us_578bfbdce4b0cbf01ea01d20,0,0.955,1
+1,cameron diaz finally opens up about generally positive experience in show business,https://entertainment.theonion.com/cameron-diaz-finally-opens-up-about-generally-positive-1819579862,1,0.6921,1
+1,nation's older brothers recommend not being such a little bitch,https://www.theonion.com/nation-s-older-brothers-recommend-not-being-such-a-litt-1823191955,1,0.8582,1
+0,hillary clinton steals the show with pitch-perfect cameo in 'song for women 2017',https://www.huffingtonpost.com/entry/daily-show-song-for-women-2017_us_5a38c387e4b0c65287abe2c4,0,0.852,1
+1,demoted cop unsure why desk job considered punishment,https://www.theonion.com/demoted-cop-unsure-why-desk-job-considered-punishment-1819569229,1,0.9492,1
+1,buzzfeed editors unsure how to spin petraeus story into reason the '90s were great,https://www.theonion.com/buzzfeed-editors-unsure-how-to-spin-petraeus-story-into-1819574192,1,0.5898,1
+0,bernie sanders says he will 'certainly support' hillary clinton if she's the democratic nominee,https://www.huffingtonpost.com/entry/bernie-sanders-hillary-clinton_us_5706fbbde4b03a9e75d3fd93,0,0.9549,1
+0,"on this week's best-dressed list, lupita nyong'o steals the show",https://www.huffingtonpost.com/entry/best-dressed-list_us_559ecc5fe4b096729155c599,0,0.9233,1
+0,this 'bear-naked' chef has a thing or two to show you about cooking,https://www.huffingtonpost.com/entry/this-bear-naked-chef-has-a-thing-or-two-to-show-you-about-cooking_us_567acc7de4b0b958f658de05,0,0.9499,1
+0,"women in business q&a: stephanie teuwen president and co-founder, teuwen communications",https://www.huffingtonpost.com/entry/women-in-business-qa-step_b_7060754.html,0,0.9426,1
+1,amazing affleck brothers dazzle oscars audience with high-flying trapeze routine,https://entertainment.theonion.com/amazing-affleck-brothers-dazzle-oscars-audience-with-hi-1819579664,1,0.9455,1
+0,city offers free pot for the poor,https://www.huffingtonpost.com/entry/free-marijuana-berkeley_n_5770256.html,1,0.9338,0
+0,washington post journalist jailed in iran has christmas meal with family,https://www.huffingtonpost.comhttps://www.washingtonpost.com/world/jailed-washington-post-correspondent-has-christmas-meal-with-family/2015/12/25/dacdb3ac-ab2d-11e5-bff5-905b92f5f94b_story.html?postshare=2821451070250310&tid=ss_tw,1,0.822,0
+1,michael dukakis wakes up not angry for first time since 1988 election,https://politics.theonion.com/michael-dukakis-wakes-up-not-angry-for-first-time-since-1819574002,1,0.9086,1
+0,everything you need to know about food and happiness,https://www.huffingtonpost.com/entry/food-and-happiness_n_6212486.html,0,0.9533,1
+1,"emporia, kansas named best small town in america to escape from",https://www.theonion.com/emporia-kansas-named-best-small-town-in-america-to-esc-1821184889,0,0.6142,0
+0,"florida man head-butts a bus, knocks himself out",https://www.huffingtonpost.com/entry/florida-man-head-butts-bus_us_55b1e138e4b0074ba5a420af,1,0.7286,0
+0,what i understood about a father-daughter relationship only after my father passed away,https://www.huffingtonpost.com/entry/what-i-understood-about-a-father-daughter-relationship_us_593aba03e4b014ae8c69dfb9,0,0.9432,1
+0,"alaska wife steals patrol car holding hubby, police say",https://www.huffingtonpost.com/entry/alaska-wife-steals-patrol-car-holding-hubby-police-say_us_55ea0e1ae4b03784e275f8b1,1,0.5179,0
+1,fucking idiot has perfect gif for that,https://local.theonion.com/fucking-idiot-has-perfect-gif-for-that-1828864809,1,0.9453,1
+0,"artist transforms gallery into a basketball court, all in the name of 'space jam'",https://www.huffingtonpost.com/entry/devin-strother_n_6439464.html,1,0.6337,0
+1,woman with amazing rack told she has beautiful eyes,https://www.theonion.com/woman-with-amazing-rack-told-she-has-beautiful-eyes-1819587486,1,0.9489,1
+0,"man busted for selling drugs and stolen guns from driveway, feds say",https://www.huffingtonpost.com/entry/man-sold-drugs-stolen-guns-from-driveway_us_565206c5e4b0d4093a582031,1,0.6553,0
+1,row of asterisks spices up otherwise ordinary e-mail,https://www.theonion.com/row-of-asterisks-spices-up-otherwise-ordinary-e-mail-1819571919,1,0.9397,1
+1,"sadly, gift certificate to loews cinemas perfect gift for area man",https://local.theonion.com/sadly-gift-certificate-to-loews-cinemas-perfect-gift-f-1819572774,1,0.9546,1
+1,"'the convergence is at hand,' announces sears ceo as employees report to company headquarters in white gowns",https://www.theonion.com/the-convergence-is-at-hand-announces-sears-ceo-as-em-1829692628,1,0.8247,1
+0,"florida man killed after standing up for gay friends, witnesses say",https://www.huffingtonpost.com/entry/lake-worth-florida-shooting-gay_us_59895efee4b0d7937389bca4,0,0.8982,1
+1,dog finds absolutely perfect place to shit,https://local.theonion.com/dog-finds-absolutely-perfect-place-to-shit-1819570520,1,0.9516,1
+1,"'there are things that exist which are not good,' says obama in stunning rebuke of trump",https://politics.theonion.com/there-are-things-that-exist-which-are-not-good-says-1827665003,0,0.6219,0
+1,burglar hiding in pistorius' bathroom figures now probably his best chance to escape,https://www.theonion.com/burglar-hiding-in-pistorius-bathroom-figures-now-probab-1819574588,1,0.9172,1
+0,stolen moment of the week: brett davis and sally burtnick,https://www.huffingtonpost.com/entry/stolen-moment-of-the-week_80_b_6357126.html,0,0.9536,1
+1,sephora makeup artist helping woman create the perfect pink eye,https://local.theonion.com/sephora-makeup-artist-helping-woman-create-the-perfect-1826258294,1,0.8835,1
+0,4 ways the drug war harms national security,https://www.huffingtonpost.com/entry/4-reasons-lawmakers-shoul_b_6762056.html,0,0.9562,1
+0,what's damaging about fat-shaming: the last acceptable form of bias,https://www.huffingtonpost.com/entry/fat-shaming_b_5842868.html,0,0.9603,1
+1,cat seemed perfectly content right up until point he bolted out of room,https://local.theonion.com/cat-seemed-perfectly-content-right-up-until-point-he-bo-1819575397,1,0.9495,1
