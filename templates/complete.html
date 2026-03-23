@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Complete</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .completion-container {
+            text-align: center;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .code-box {
+            background: #f1f8ff;
+            border: 2px dashed #007bff;
+            color: #007bff;
+            padding: 20px;
+            margin: 25px 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.4em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-radius: 8px;
+        }
+        .instructions {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .btn-home {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="completion-container">
+            <h1 style="color: #28a745;">Session Complete! ✅</h1>
+            
+            <p class="instructions">
+                Great job! You have finished all 36 headlines for this part of the study. 
+                Your responses have been successfully recorded.
+            </p>
+
+            <p><b>Please copy the code below and paste it into the MTurk HIT:</b></p>
+
+            <div class="code-box">
+                {{ completion_code }}
+            </div>
+
+            <p class="instructions" style="font-size: 0.9em;">
+                <i>Note: You must submit this code in the MTurk Worker Sandbox to receive credit for Assignment 3.</i>
+            </p>
+
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
+
+            <p>Thank you for helping with our research! We'll see you for the second session on Thursday.</p>
+        </div>
+    </div>
+</body>
+</html>
