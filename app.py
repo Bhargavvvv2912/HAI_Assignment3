@@ -1,10 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
-import os
-import datetime
-import uuid
-import pandas as pd
-import random
+import os, datetime, uuid, random, pandas as pd, traceback
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "bhargav_sarcasm_study_2026")
@@ -18,7 +14,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = uri
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-# --- DATABASE MODEL (Renamed to StudySubmission to fix 500 error) ---
+# --- DATABASE MODEL ---
 class StudySubmission(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     uniqname = db.Column(db.String(50))
@@ -31,7 +27,7 @@ class StudySubmission(db.Model):
     time_spent = db.Column(db.Float)
     timestamp = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
-# Initialize tables
+# Initialize tables (Safe: no drop_all)
 with app.app_context():
     db.create_all()
 
@@ -48,7 +44,6 @@ for i in range(1, 7):
 
 @app.route('/')
 def index():
-    # This captures ?c=ai or ?c=baseline from the URL
     session['condition'] = request.args.get('c', 'baseline')
     return render_template('index.html')
 
@@ -63,15 +58,8 @@ def start_task():
     session['uniqname'] = u_name
     session['worker_id'] = w_id
     
-    # Check DB using the NEW model name
     existing = StudySubmission.query.filter_by(uniqname=u_name).first()
-    
-    if existing:
-        assigned_version = existing.version
-    else:
-        assigned_version = random.randint(1, 6)
-    
-    session['version'] = assigned_version
+    session['version'] = existing.version if existing else random.randint(1, 6)
     session['current_trial'] = 0
     return redirect(url_for('task'))
 
@@ -80,7 +68,9 @@ def task():
     v = session.get('version')
     idx = session.get('current_trial')
     
-    if v not in versions_dict or idx >= len(versions_dict[v]):
+    # UPDATE: We end the study at 36 trials regardless of CSV length
+    # This keeps your accuracy and time metrics consistent for A3-2
+    if v not in versions_dict or idx >= 36 or idx >= len(versions_dict[v]):
         return redirect(url_for('complete'))
 
     df = versions_dict[v]
@@ -90,40 +80,29 @@ def task():
     return render_template('task.html', 
                            trial=trial_data, 
                            condition=session['condition'],
-                           progress=f"{idx + 1} of {len(df)}")
+                           progress=f"{idx + 1} of 36") # Always shows 'of 36'
 
 @app.route('/submit', methods=['POST'])
 def submit():
     try:
-        # 1. Pull from session and force to standard Python INT
         idx = session.get('current_trial')
         v = session.get('version')
 
-        # Safety check: if session died, restart them
         if idx is None or v is None:
             return redirect(url_for('index'))
 
-        idx = int(idx)
-        v = int(v)
-        
-        # 2. Capture the user's choice from the button
+        idx, v = int(idx), int(v)
         user_choice = int(request.form.get('choice', 0))
-        
-        # 3. Get the CSV data
         df = versions_dict[v]
         
-        # Force these to standard Python types (str and int)
-        # This prevents the "Numpy" database error
         headline_text = str(df.iloc[idx]['input'])
         truth_value = int(df.iloc[idx]['ground_truth'])
         
-        # 4. Handle Timer
         start_time_str = session.get('start_time')
         duration = 0.0
         if start_time_str:
             duration = (datetime.datetime.now() - datetime.datetime.fromisoformat(start_time_str)).total_seconds()
 
-        # 5. Database Save (Explicitly casting every field)
         new_result = StudySubmission(
             uniqname=str(session.get('uniqname')),
             worker_id=str(session.get('worker_id')),
@@ -137,17 +116,17 @@ def submit():
         db.session.add(new_result)
         db.session.commit()
 
-        # 6. Update trial and redirect
         session['current_trial'] = idx + 1
         return redirect(url_for('task'))
     
     except Exception as e:
-        # This will now show the EXACT line and error type
-        import traceback
         return f"<h2>Submission Error</h2><p>{str(e)}</p><pre>{traceback.format_exc()}</pre>"
+
 @app.route('/complete')
 def complete():
-    code = f"SARCASM-{session.get('uniqname')[:3].upper()}-{str(uuid.uuid4())[:4].upper()}"
+    # Final check for uniqname to avoid errors on page refresh
+    u_name = session.get('uniqname', 'USER')
+    code = f"SARCASM-{u_name[:3].upper()}-{str(uuid.uuid4())[:4].upper()}"
     return render_template('complete.html', completion_code=code)
 
 @app.route('/export_bhargav_99')
