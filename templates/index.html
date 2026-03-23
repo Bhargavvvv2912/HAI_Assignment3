@@ -1,14 +1,62 @@
 <!DOCTYPE html>
-<html>
-<head><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Headline Classification Study</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .form-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box; /* Ensures padding doesn't affect width */
+        }
+        .note {
+            font-size: 0.85em;
+            color: #7f8c8d;
+            margin-top: 25px;
+            line-height: 1.4;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+    </style>
+</head>
 <body>
     <div class="container">
-        <h1>Headline Classification Study</h1>
-        <p>You will review a series of news headlines and decide if they are <b>Real News</b> or <b>Sarcastic</b>.</p>
+        <h1>Headline Analysis Study</h1>
+        <p>You will review a series of news headlines and determine if they are <b>Real News</b> or <b>Sarcastic</b>.</p>
+        
         <form action="/start" method="POST">
-            <input type="text" name="worker_id" placeholder="Enter MTurk Worker ID" required>
-            <button type="submit">Begin Task</button>
+            <div class="form-group">
+                <label for="uniqname">UMich Uniqname:</label>
+                <input type="text" id="uniqname" name="uniqname" 
+                       placeholder="e.g. bhargavk" required>
+            </div>
+
+            <div class="form-group">
+                <label for="worker_id">MTurk Worker ID:</label>
+                <input type="text" id="worker_id" name="worker_id" 
+                       placeholder="e.g. A123BC456..." required>
+            </div>
+
+            <button type="submit" class="real" style="width: 100%;">Begin Study</button>
         </form>
+
+        <div class="note">
+            <b>Why two IDs?</b> We use your Uniqname to ensure you see the <i>same</i> headlines in both the Baseline and AI-Assisted versions of this study. Your MTurk ID is used to verify your participation in the Sandbox.
+        </div>
     </div>
 </body>
 </html>

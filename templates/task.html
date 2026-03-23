@@ -1,21 +1,44 @@
 <!DOCTYPE html>
-<html>
-<head><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
 <body>
     <div class="container">
-        <div class="progress">Headline {{ progress }}</div>
+        <div class="progress">Trial {{ progress }}</div>
+        
         <h2 class="headline">"{{ trial.input }}"</h2>
 
         {% if condition == 'ai' %}
-        <div class="ai-box">
-            <p><b>💡 Model Suggestion:</b> {{ "Sarcastic" if trial.model_output == 1 else "Real News" }}</p>
-            <p><b>Confidence:</b> {{ (trial.ai_confidence * 100)|round|int }}%</p>
+        <div class="ai-box" style="border: 2px solid #007bff; background: #f0f8ff; padding: 20px; border-radius: 10px; margin: 25px 0; text-align: left;">
+            <p style="margin: 0; font-size: 0.9em; color: #555;"><b>💡 AI Assistant Suggestion</b></p>
+            
+            <p style="font-size: 1.2em; margin: 10px 0;">
+                The model predicts this headline is: 
+                <span style="color: #007bff; font-weight: bold;">
+                    {{ "Sarcastic" if trial.model_output == 1 else "Real News" }}
+                </span>
+            </p>
+
+            <div style="background: #e0e0e0; height: 8px; border-radius: 4px; overflow: hidden; margin-top: 10px;">
+                <div style="background: #007bff; width: {{ (trial.ai_confidence * 100)|round|int }}%; height: 100%;"></div>
+            </div>
+            
+            <p style="font-size: 0.85em; color: #007bff; margin-top: 5px;">
+                <b>Confidence Score: {{ (trial.ai_confidence * 100)|round|int }}%</b>
+            </p>
+
+            <p style="font-size: 0.75em; color: #777; margin-top: 15px; font-style: italic;">
+                *Note: The AI is not perfect. Please use your best judgment to confirm or reject its prediction!
+            </p>
         </div>
         {% endif %}
 
         <form action="/submit" method="POST" class="btn-group">
-            <button name="choice" value="0" class="real">Real News</button>
-            <button name="choice" value="1" class="sarcastic">Sarcastic</button>
+            <button name="choice" value="0" class="real" style="flex: 1; margin-right: 10px;">Real News</button>
+            <button name="choice" value="1" class="sarcastic" style="flex: 1; margin-left: 10px;">Sarcastic</button>
         </form>
     </div>
 </body>
