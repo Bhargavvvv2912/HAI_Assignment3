@@ -33,8 +33,6 @@ class StudySubmission(db.Model):
 
 # Initialize tables
 with app.app_context():
-    # We keep drop_all() for ONE last push to ensure the new table is clean
-    db.drop_all()
     db.create_all()
 
 # --- DATA PRE-LOADING ---
