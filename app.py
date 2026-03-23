@@ -131,17 +131,6 @@ def complete():
     code = f"SARCASM-{u_name[:3].upper()}-{str(uuid.uuid4())[:4].upper()}"
     return render_template('complete.html', completion_code=code)
 
-@app.route('/clear_bhargav_99')
-def clear_db():
-    try:
-        # This will delete every row in your results table
-        # If your table name is FinalData, use that. If it's FinalResultsV6, use that.
-        num_deleted = db.session.query(FinalResultsV5).delete() 
-        db.session.commit()
-        return f"<h1>Database Cleared!</h1><p>Deleted {num_deleted} test entries. You are ready for the study!</p>"
-    except Exception as e:
-        return f"<h1>Error</h1><p>{str(e)}</p>"
-    
 @app.route('/export_bhargav_99')
 def export_data():
     import io, csv
