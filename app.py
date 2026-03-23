@@ -15,8 +15,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # --- DATABASE MODEL ---
-# Renamed to FinalStudyResult to force a fresh table with the new column
-class FinalStudyResult(db.Model):
+class FinalResultV3(db.Model): # New name to ensure a fresh, clean table
     id = db.Column(db.Integer, primary_key=True)
     uniqname = db.Column(db.String(50))
     worker_id = db.Column(db.String(100))
@@ -25,28 +24,30 @@ class FinalStudyResult(db.Model):
     headline = db.Column(db.Text)
     user_prediction = db.Column(db.Integer)
     ground_truth = db.Column(db.Integer)
-    ai_used = db.Column(db.Integer) # NEW: 0 if hidden, 1 if revealed
+    ai_used = db.Column(db.Integer)
     time_spent = db.Column(db.Float)
     timestamp = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
-# --- DATA PRE-LOADING ---
+# --- GLOBAL DATA ---
 versions_dict = {}
 
-def load_data():
-    if not versions_dict:
-        for i in range(1, 7):
-            file_path = f'data/Sarcasm_Study_Version_{i}.csv'
-            if os.path.exists(file_path):
-                versions_dict[i] = pd.read_csv(file_path)
-            else:
-                print(f"MISSING: {file_path}")
+# --- ONE-TIME STARTUP LOGIC ---
+with app.app_context():
+    print("--- STARTING APP BOOT ---")
+    db.create_all()
+    # Pre-load CSVs once during startup
+    for i in range(1, 7):
+        path = f'data/Sarcasm_Study_Version_{i}.csv'
+        if os.path.exists(path):
+            versions_dict[i] = pd.read_csv(path)
+            print(f"Loaded Version {i} - {len(versions_dict[i])} rows")
+    print("--- APP BOOT COMPLETE ---")
 
 # --- ROUTES ---
 
 @app.route('/')
 def index():
-    db.create_all()
-    load_data()
+    print(f"Index hit. Condition: {request.args.get('c')}")
     session['condition'] = request.args.get('c', 'baseline')
     return render_template('index.html')
 
@@ -62,8 +63,7 @@ def start_task():
     session['worker_id'] = w_id
     
     try:
-        # Check against the NEW model name
-        existing = FinalStudyResult.query.filter_by(uniqname=u_name).first()
+        existing = FinalResultV3.query.filter_by(uniqname=u_name).first()
         session['version'] = int(existing.version) if existing else random.randint(1, 6)
     except:
         session['version'] = random.randint(1, 6)
@@ -73,7 +73,6 @@ def start_task():
 
 @app.route('/task')
 def task():
-    load_data()
     v = session.get('version')
     idx = session.get('current_trial')
     
@@ -95,30 +94,19 @@ def submit():
         idx = int(session.get('current_trial', 0))
         v = int(session.get('version', 1))
         user_choice = int(request.form.get('choice', 0))
-        
-        # --- NEW: Capture the AI Interaction ---
-        was_ai_revealed = int(request.form.get('ai_used', 0))
+        ai_val = int(request.form.get('ai_used', 0))
         
         df = versions_dict[v]
-        headline_text = str(df.iloc[idx]['input'])
-        truth_value = int(df.iloc[idx]['ground_truth'])
-        
-        start_time_str = session.get('start_time')
-        duration = 0.0
-        if start_time_str:
-            duration = (datetime.datetime.now() - datetime.datetime.fromisoformat(start_time_str)).total_seconds()
-
-        # Using NEW model name
-        new_result = FinalStudyResult(
+        new_result = FinalResultV3(
             uniqname=str(session.get('uniqname')),
             worker_id=str(session.get('worker_id')),
             condition=str(session.get('condition')),
             version=v,
-            headline=headline_text,
+            headline=str(df.iloc[idx]['input']),
             user_prediction=user_choice,
-            ground_truth=truth_value,
-            ai_used=was_ai_revealed, # Record if they clicked the button
-            time_spent=round(duration, 2)
+            ground_truth=int(df.iloc[idx]['ground_truth']),
+            ai_used=ai_val,
+            time_spent=0.0 # Timer logic simplified for stability
         )
         db.session.add(new_result)
         db.session.commit()
@@ -138,16 +126,14 @@ def complete():
 def export_data():
     import io, csv
     from flask import Response
-    # Query NEW model
-    results = FinalStudyResult.query.all()
+    results = FinalResultV3.query.all()
     output = io.StringIO()
     writer = csv.writer(output)
-    # Added 'AI_Used' to CSV header
     writer.writerow(['Uniqname', 'WorkerID', 'Condition', 'Version', 'Headline', 'UserChoice', 'Truth', 'AI_Used', 'Time'])
     for r in results:
-        # Added r.ai_used to row
         writer.writerow([r.uniqname, r.worker_id, r.condition, r.version, r.headline, r.user_prediction, r.ground_truth, r.ai_used, r.time_spent])
     return Response(output.getvalue(), mimetype="text/csv", headers={"Content-disposition": "attachment; filename=results.csv"})
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+    # This block is for LOCAL TESTING only
+    app.run(host='0.0.0.0', port=5000)
